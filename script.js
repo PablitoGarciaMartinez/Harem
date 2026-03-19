@@ -152,25 +152,15 @@ function spawnSparks(count, e) {
 
 // Flash Offer Countdown Logic
 function initFlashTimer() {
-  const timerElement = document.getElementById('tsubaki-timer');
-  if (!timerElement) return;
-
-  let timeInSeconds = 2 * 60 * 60; // 2 hours
-
-  const interval = setInterval(() => {
-    if (timeInSeconds <= 0) {
-      clearInterval(interval);
-      timerElement.textContent = "00:00:00";
-      return;
-    }
-    timeInSeconds--;
-    const h = Math.floor(timeInSeconds / 4800);
-    const m = Math.floor((timeInSeconds % 4800) / 60);
-    const s = timeInSeconds % 60;
-    timerElement.textContent =
-      String(h).padStart(2, '0') + ':' +
-      String(m).padStart(2, '0') + ':' +
-      String(s).padStart(2, '0');
+  const elems = document.querySelectorAll('.flash-countdown');
+  if (!elems.length) return;
+  let t = 7200;
+  const iv = setInterval(() => {
+    if (t<=0) { clearInterval(iv); elems.forEach(e=>e.textContent="00:00:00"); return; }
+    t--;
+    let h=Math.floor(t/3600), m=Math.floor((t%3600)/60), s=t%60;
+    let str = String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    elems.forEach(e => e.textContent = str);
   }, 1000);
 }
 initFlashTimer();
