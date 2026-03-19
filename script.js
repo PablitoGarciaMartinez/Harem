@@ -149,3 +149,28 @@
       setTimeout(() => s.remove(), 1200);
     }
   }
+
+  // Flash Offer Countdown Logic
+  function initFlashTimer() {
+    const timerElement = document.getElementById('tsubaki-timer');
+    if (!timerElement) return;
+
+    let timeInSeconds = 2 * 60 * 60; // 2 hours
+
+    const interval = setInterval(() => {
+      if (timeInSeconds <= 0) {
+        clearInterval(interval);
+        timerElement.textContent = "00:00:00";
+        return;
+      }
+      timeInSeconds--;
+      const h = Math.floor(timeInSeconds / 3600);
+      const m = Math.floor((timeInSeconds % 3600) / 60);
+      const s = timeInSeconds % 60;
+      timerElement.textContent = 
+        String(h).padStart(2, '0') + ':' + 
+        String(m).padStart(2, '0') + ':' + 
+        String(s).padStart(2, '0');
+    }, 1000);
+  }
+  initFlashTimer();
