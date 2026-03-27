@@ -276,7 +276,7 @@ header {
   z-index: 10;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 28px;
   padding: 0 40px 80px;
   max-width: 1400px;
@@ -774,6 +774,104 @@ footer {
   transform: translateY(0);
 }
 
+/* Pack 2x1 Container */
+.pack-2x1-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 30px 30px;
+  background: linear-gradient(135deg, rgba(255, 45, 120, 0.08), rgba(0, 245, 255, 0.08));
+  border: 2px solid var(--neon-pink);
+  border-radius: 24px;
+  box-shadow: 0 0 30px rgba(255, 45, 120, 0.2), inset 0 0 20px rgba(0, 245, 255, 0.1);
+  position: relative;
+  width: 100%;
+  animation: pack-glow 3s infinite alternate ease-in-out;
+  margin-bottom: 20px;
+}
+
+@keyframes pack-glow {
+  0% { box-shadow: 0 0 20px rgba(255, 45, 120, 0.3), inset 0 0 20px rgba(0, 245, 255, 0.2); border-color: var(--neon-pink); }
+  100% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.5), inset 0 0 40px rgba(255, 45, 120, 0.3); border-color: var(--neon-cyan); }
+}
+
+.pack-badge {
+  text-align: center;
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+  background-size: 200% 200%;
+  animation: gradient-shift 3s infinite alternate;
+  padding: 12px 40px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(255, 45, 120, 0.6);
+  transform: translateY(-60px);
+  position: absolute;
+  top: 0;
+  z-index: 20;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.pack-title {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-size: 3.5rem;
+  color: white;
+  letter-spacing: 4px;
+  line-height: 1;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.pack-subtitle {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+.pack-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  width: 100%;
+  position: relative;
+}
+
+.pack-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  font-family: 'Bangers', cursive;
+  font-size: 5rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px var(--gold);
+  animation: pulse-plus 1.5s infinite alternate;
+  margin: 0 10px;
+}
+
+@keyframes pulse-plus {
+  0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--gold)); }
+  100% { transform: scale(1.15) rotate(5deg); filter: drop-shadow(0 0 30px var(--gold)); color: #fff; }
+}
+
+.free-card .card-inner::before {
+  animation: border-flow-fast 0.5s linear infinite;
+}
+
+@keyframes border-flow-fast {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
 
 .divine .card-rarity {
   background: rgba(255, 255, 255, 0.15);
